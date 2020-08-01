@@ -1,7 +1,7 @@
 @extends('backend.master')
-@section('title')
-    Anasayfa..
-    @endsection
+{{--@section('title')--}}
+{{--    Anasayfa..--}}
+{{--    @endsection--}}
 @section('content')
     <div class="span9">
         <div class="content">

@@ -2,3 +2,4 @@
 @include('backend.sidebar')
 @yield('content')
 @include('backend.footer')
+@include('sweetalert::alert')

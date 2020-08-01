@@ -4,14 +4,12 @@
             <div class="span3">
                 <div class="sidebar">
                     <ul class="widget widget-menu unstyled">
-                        <li class="active"><a href="index.html"><i class="menu-icon icon-dashboard"></i>Dashboard
+                        <li class="active"><a href="{{url('/')}}"><i class="menu-icon icon-dashboard"></i>Home
                             </a></li>
-                        <li><a href="activity.html"><i class="menu-icon icon-bullhorn"></i>News Feed </a>
+                        <li><a href="{{route('quizzes.index')}}"><i class="menu-icon icon-bullhorn"></i>All Quizzes<b class="label green pull-right">
+                                    {{\App\Quiz::all()->count()}}</b> </a>
                         </li>
-                        <li><a href="message.html"><i class="menu-icon icon-inbox"></i>Inbox <b class="label green pull-right">
-                                    11</b> </a></li>
-                        <li><a href="task.html"><i class="menu-icon icon-tasks"></i>Tasks <b class="label orange pull-right">
-                                    19</b> </a></li>
+                        <li><a href="{{route('quizzes.create')}}"><i class="menu-icon icon-inbox"></i>Create Quiz  </a></li>
                     </ul>
                     <!--/.widget-nav-->
 

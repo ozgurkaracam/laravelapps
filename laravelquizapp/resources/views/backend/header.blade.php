@@ -4,13 +4,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@yield('title')</title>
-        <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-        <link type="text/css" href="css/theme.css" rel="stylesheet">
-        <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
+        <title>@yield('title','Quiz App')</title>
+        <link type="text/css" href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link type="text/css" href="{{asset('bootstrap/css/bootstrap-responsive.min.css')}}" rel="stylesheet">
+        <link type="text/css" href="{{asset('css/theme.css')}}" rel="stylesheet">
+        <link type="text/css" href="{{asset('images/icons/css/font-awesome.css')}}" rel="stylesheet">
         <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
               rel='stylesheet'>
+        @yield('scripts')
     </head>
 <body>
 <div class="navbar navbar-fixed-top">
@@ -43,7 +44,7 @@
                     </li>
                     <li><a href="#">Support </a></li>
                     <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="images/user.png" class="nav-avatar" />
+                            <img src="{{asset('images/user.png')}}" class="nav-avatar" />
                             <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Your Profile</a></li>

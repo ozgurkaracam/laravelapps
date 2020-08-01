@@ -17,6 +17,12 @@ Route::get('/',function (){
     return view('admin.index');
 });
 
+Route::resource('quizzes','QuizController');
+
+Route::resource('questions','QuestionController');
+
+Route::get('/quizzes/questions/{id}','QuestionController@index')->name('quizzes.questions');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
