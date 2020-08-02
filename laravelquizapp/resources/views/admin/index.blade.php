@@ -3,9 +3,12 @@
 {{--    Anasayfa..--}}
 {{--    @endsection--}}
 @section('content')
-    <div class="span9">
-        <div class="content">
-            <h1>Deneme..</h1>
-        </div>
-    </div>
-    @endsection
+@include('backend.dashboard')
+@endsection
+{{--@section('content')--}}
+{{--    <div class="span9">--}}
+{{--        <div class="content">--}}
+{{--            <h1>Deneme..</h1>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--    @endsection--}}
