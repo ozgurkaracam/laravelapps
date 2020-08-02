@@ -22,6 +22,7 @@
                             <th>#</th>
                             <th>Quiz Name</th>
                             <th>Quiz Description</th>
+                            <th>Quiz Duration</th>
                             <th>Questions</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -33,8 +34,9 @@
                             <td>{{$key+1}}</td>
                             <td>{{$quiz->name}}</td>
                             <td>{{$quiz->description}}</td>
-                            <td>{{$quiz->questions()->count()}}
-                                <a href="{{route('quizzes.questions',$quiz->id)}}" class="btn btn-success">See Questions</a>
+                            <td>{{$quiz->duration}} Min</td>
+                            <td>
+                                <a href="{{route('quizzes.questions',$quiz->id)}}" class="btn btn-success">{{$quiz->questions()->count()}} Questions</a>
                             </td>
                             <td class="center">
                                 <a href="{{route('quizzes.edit',$quiz->id)}}" class="btn btn-info">Edit</a>

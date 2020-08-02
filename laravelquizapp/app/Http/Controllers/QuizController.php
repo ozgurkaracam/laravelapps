@@ -95,7 +95,8 @@ class QuizController extends Controller
     public function vualidate($request){
         $request->validate([
             'name'=>'required|min:5',
-            'description'=>'required|min:5'
+            'description'=>'required|min:5',
+            'duration'=>'required|integer'
         ]);
     }
 }

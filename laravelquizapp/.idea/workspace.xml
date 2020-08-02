@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e6d11642-221e-44b2-b27e-beb56fe8a202" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuestionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/questions/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/questions/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/questions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/questions/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Quiz.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Quiz.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/quizzes/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/quizzes/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/quizzes/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/quizzes/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +192,7 @@
       <option name="presentableId" value="Default" />
       <updated>1596219950512</updated>
       <workItem from="1596219953223" duration="1047000" />
-      <workItem from="1596278687478" duration="22036000" />
+      <workItem from="1596278687478" duration="22865000" />
     </task>
     <servers />
   </component>
@@ -205,9 +204,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="444" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1596278899934" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1596370174191">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1596374810986">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1596370174191" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1596374810986" />
   </component>
 </project>

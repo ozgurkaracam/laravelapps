@@ -27,9 +27,17 @@
                             <span class="help-inline">{{$message}}</span>
                             @enderror
                         </div>
-
-
                     </div>
+                    <div class="control-group">
+                        <label class="control-label" for="duration">Quiz Duration</label>
+                        <div class="controls">
+                            <input type="number" id="duration" name="duration" value="{{isset($quiz) ? $quiz->duration : Old('duration')}}" placeholder="Quiz duration" class="span8">
+                            @error('name')<br>
+                            <span class="help-inline">{{$message}}</span>
+                            @enderror
+                        </div>
+                    </div>
+
                     <div class="control-group">
                         <div class="controls">
                             <button type="submit" class="btn btn-primary">Save!</button>
