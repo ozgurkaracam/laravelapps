@@ -20,8 +20,10 @@ Route::get('/',function (){
 Route::resource('quizzes','QuizController');
 
 Route::resource('questions','QuestionController');
+Route::get('/questions/create/{quiz?}','QuestionController@create')->name('questions.create.quiz');
 
-Route::get('/quizzes/questions/{id}','QuestionController@index')->name('quizzes.questions');
+Route::get('/quizzes/questions/{id?}','QuestionController@quizQuestion')->name('quizzes.questions');
+
 
 Auth::routes();
 

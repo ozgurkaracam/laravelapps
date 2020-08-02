@@ -14,19 +14,22 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($quiz)
+    public function index()
     {
+            return view('admin.questions.index',['questions'=>Question::all()]);
+    }
+    public function quizQuestion($quiz){
         return view('admin.questions.index',['questions'=>Quiz::find($quiz)->questions,'quiz'=>Quiz::find($quiz)]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($quiz=null)
     {
-        return view('admin.questions.create',['quizzes'=>Quiz::all() ]);
+        $quizz=Quiz::find($quiz);
+        return view('admin.questions.create',['quizzes'=>Quiz::all(),'quizz'=>$quizz ]);
     }
 
     /**
@@ -40,6 +43,7 @@ class QuestionController extends Controller
         $request->validate([
             'question'=>'required|min:5',
             'answer'=>'required|array',
+            'answer.*'=>'required|min:5',
             'quiz'=>'required',
             'correct_answer'=>'required'
         ]);
@@ -76,7 +80,7 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.questions.create',['quizzes'=>Quiz::all(),'question'=>Question::find($id)]);
     }
 
     /**
@@ -88,7 +92,24 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'question'=>'required|min:5',
+            'answer'=>'required|array',
+            'answer.*'=>'required|min:5',
+            'quiz'=>'required',
+            'correct_answer'=>'required'
+        ]);
+        $question=Question::find($id);
+        $question->quiz()->associate(Quiz::find($request->quiz));
+        $question->question=$request->question;
+        $question->save();
+        for($i=0;$i<4;$i++){
+            $question->answers[$i]->answer=$request->answer[$i];
+            $i==$request->correct_answer ? $question->answers[$i]->is_correct = true : $question->answers[$i]->is_correct = false ;
+            $question->answers[$i]->save();
+        }
+        return redirect()->route('quizzes.questions',$question->quiz->id)->with('success','Question and Answers Update!!!');
+
     }
 
     /**
@@ -99,6 +120,9 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $idd=Question::find($id)->quiz->id;
+        $question=Question::find($id);
+        $question ? $question->delete() : null;
+        return redirect()->route('quizzes.questions',$idd)->with('success','Question and Answers Delete!!!');
     }
 }

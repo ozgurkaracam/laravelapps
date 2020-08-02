@@ -6,53 +6,38 @@
             <div class="module">
                 <div class="module-head">
                     <h3>
-                        Question Create
+                        Question {{isset($question) ? 'Edit' : 'Create'}}
                     </h3>
                 </div>
                 <div class="module-body">
-                    <form class="form-horizontal row-fluid" action="{{route('questions.store')}}" method="POST">
+                    <form class="form-horizontal row-fluid" action="{{isset($question) ? route('questions.update',$question->id) : route('questions.store')}}" method="POST">
                         @csrf
+                        {{ isset($question) ? method_field('PUT') : null }}
                         <div class="control-group">
                             <label class="control-label" for="question">Question</label>
                             <div class="controls">
-                                <textarea class="span8" rows="5" id="question" name="question"></textarea>
+                                <textarea class="span8" rows="5" id="question" name="question">{{ $question->question ?? Old('question') }}</textarea>
                             </div>
                         </div>
                         <div class="text-center font-weight-bold">
                             <span>Answers</span>
                         </div>
+                        @for($i=0;$i<4;$i++)
                         <div class="control-group">
-                            <label class="control-label" for="optiona">Option A</label>
+                            <label class="control-label" for="{{$i}}">Option {{$i+1}}</label>
                             <div class="controls">
-                                <input type="text" name="answer[]"  id="optiona" placeholder="Option A" class="span8">
-                                <span class="help-inline"><input type="radio" name="correct_answer" id="optionsRadios1" value="0">
+                                <input type="text" name="answer[]" value="{{$question->answers[$i]->answer ?? Old('answer[{$i}]')}}"  id="{{$i}}" placeholder="Option {{$i+1}}" class="span8">
+                                <span class="help-inline"><input type="radio" {{isset($question) && $question->answers[$i]->is_correct ? 'checked' : null}} name="correct_answer" id="optionsRadios1" value="{{$i}}">
 													Correct Answer</span>
                             </div>
-                            <label class="control-label" for="optionb">Option B</label>
-                            <div class="controls">
-                                <input type="text" name="answer[]"  id="optionb" placeholder="Option B" class="span8">
-                                <span class="help-inline"><input type="radio" name="correct_answer" id="optionsRadios1" value="1">
-													Correct Answer</span>
-                            </div>
-                            <label class="control-label" for="optionc">Option C</label>
-                            <div class="controls">
-                                <input type="text" name=answer[]" id="optionc" placeholder="Option C" class="span8">
-                                <span class="help-inline"><input type="radio" name="correct_answer" id="optionsRadios1" value="2">
-													Correct Answer</span>
-                            </div>
-                            <label class="control-label" for="optiond">Option D</label>
-                            <div class="controls">
-                                <input type="text" name="answer[]"  id="optiond" placeholder="Option D" class="span8">
-                                <span class="help-inline"><input type="radio" name="correct_answer" id="optionsRadios1" value="3">
-													Correct Answer</span>
-                            </div>
+                            @endfor
                         </div>
                         <div class="control-group">
                             <label class="control-label" for="quiz">Quiz</label>
                             <div class="controls">
                                 <select tabindex="1" data-placeholder="Select here.." name="quiz" id="quiz" class="span8">
                                     @foreach($quizzes as $quiz)
-                                    <option value="{{$quiz->id}}">{{$quiz->name}}</option>
+                                    <option {{ isset($quizz) && $quizz->id==$quiz->id ? 'selected' : null }} value="{{$quiz->id}}" {{ isset($question) && $question->quiz == $quiz ? 'selected' : null}}>{{$quiz->name}}</option>
                                         @endforeach
                                 </select>
                             </div>
@@ -63,6 +48,15 @@
                             </div>
                         </div>
                     </form>
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                 </div>
             </div>
         </div>
