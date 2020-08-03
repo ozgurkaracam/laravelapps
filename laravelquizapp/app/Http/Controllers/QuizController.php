@@ -6,6 +6,7 @@ use App\Question;
 use App\Quiz;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\User;
 
 class QuizController extends Controller
 {
@@ -98,5 +99,21 @@ class QuizController extends Controller
             'description'=>'required|min:5',
             'duration'=>'required|integer'
         ]);
+    }
+
+    public function QuizzesUsers(){
+        return view('admin.quizzes.users',['quizzes'=>Quiz::all()]);
+    }
+    public function QuizUsers($id){
+        return view('admin.quizzes.user',['quiz'=>Quiz::find($id)]);
+    }
+    public function updateUsers(Request $request,$id){
+        $quiz=Quiz::findOrFail($id);
+        Quiz::findOrFail($id)->users()->detach();
+        if($request->users!=null){
+        foreach ($request->users as $user)
+            Quiz::findOrFail($id)->users()->attach(User::findOrFail($user));
+        }
+        return redirect()->back()->with('message',$quiz->name.' Exams Update Succesfully!');
     }
 }

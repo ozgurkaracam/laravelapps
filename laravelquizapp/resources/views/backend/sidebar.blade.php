@@ -4,7 +4,7 @@
             <div class="span3">
                 <div class="sidebar">
                     <ul class="widget widget-menu unstyled">
-                        <li class="active"><a href="{{url('/')}}"><i class="menu-icon icon-dashboard"></i>Home
+                        <li class="active"><a href="{{url('admin')}}"><i class="menu-icon icon-dashboard"></i>Home
                             </a></li>
                         <li><a href="{{route('quizzes.index')}}"><i class="menu-icon icon-bullhorn"></i>All Quizzes<b class="label green pull-right">
                                 {{\App\Quiz::all()->count()}}</b> </a>
@@ -24,9 +24,11 @@
 {{--                        <li><a href="charts.html"><i class="menu-icon icon-bar-chart"></i>Charts </a></li>--}}
                     </ul>
                     <ul class="widget widget-menu unstyled">
-                        <li><a href="{{route('users.index')}}"><i class="menu-icon icon-book"></i>All Users</a></li>
+                        <li><a href="{{route('users.index')}}"><i class="menu-icon icon-book"></i> <b class="label green pull-right">
+                                    {{\App\User::all()->count()}}</b>All Users</a></li>
                         <li><a href="{{route('users.create')}}"><i class="menu-icon icon-book"></i>User Create</a></li>
-                        <li><a href=""><i class="menu-icon icon-book"></i>User - Quizzes</a></li>
+                        <li><a href="{{route('users.quizzes')}}"><i class="menu-icon icon-book"></i>User - Quizzes</a></li>
+                        <li><a href="{{route('quizzes.users')}}"><i class="menu-icon icon-book"></i>Quiz - Users</a></li>
                     </ul>
                     <!--/.widget-nav-->
 {{--                    <ul class="widget widget-menu unstyled">--}}

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Quiz;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use function Sodium\add;
 
 class UserController extends Controller
 {
@@ -39,7 +41,7 @@ class UserController extends Controller
         $data=$this->vall($request);
         $data['password']=Hash::make($data['password']);
         User::create($data);
-        return 'OK';
+        return redirect()->route('users.index')->with('message','user update succesfully!');
     }
 
     /**
@@ -53,6 +55,27 @@ class UserController extends Controller
         //
     }
 
+    public function UsersQuizzes(){
+        return view('admin.users.quizzes',['users'=>User::all()]);
+    }
+    public function UserQuizzes($id){
+        return view('admin.users.quiz',['user'=>User::find($id)]);
+    }
+    public function updateQuizzes(Request $request,$id){
+        $user=User::findOrFail($id);
+//        $uqids=[];
+//        foreach ($user->quizzes as $quiz)
+//            array_push($uqids,$quiz->id);
+//        dd(array_diff(intval($request->quizzes),$uqids));
+//        dd(array_diff($user->quizzes,$request->quizzes));
+        User::findOrFail($id)->quizzes()->detach();
+        if($request->users!=null) {
+            foreach ($request->quizzes as $quiz)
+                User::findOrFail($id)->quizzes()->attach(Quiz::findOrFail($quiz));
+        }
+        return redirect()->back()->with('message',$user->name.' Exams Update Succesfully!');
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -61,7 +84,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-
+            return view('admin.users.create',['user'=>User::find($id)]);
     }
 
     /**
@@ -74,8 +97,9 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $data=$this->vall($request);
-        User::update($data);
-        return 'OK';
+        $data['password']=Hash::make($data['password']);
+        User::findOrFail($id)->update($data);
+        return redirect()->back()->with('message','user update succesfully!');
     }
 
     /**

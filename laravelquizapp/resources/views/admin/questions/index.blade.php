@@ -19,7 +19,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Question</th>
-                                <th>Answers</th>
+                                <th>Correct Answer</th>
                                 @if(!isset($quiz))
                                     <th>Quiz Name</th>
                                 @endif
@@ -32,7 +32,7 @@
                                 <tr class="gradeA">
                                     <td>{{$key+1}}</td>
                                     <td>{{$question->question}}</td>
-                                    <td>{{$question->answers()->count()}}</td>
+                                    <td>{{$question->answers()->where('is_correct',1)->firstOrFail()->answer}}</td>
                                     @if(!isset($quiz))
                                         <td>{{$question->quiz->name}}</td>
                                         @endif

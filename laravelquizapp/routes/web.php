@@ -13,19 +13,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',function (){
-    return view('admin.index');
+Route::get('/',function(){
+    return view('welcome');
 });
 
-Route::resource('quizzes','QuizController');
 
-Route::resource('questions','QuestionController');
-Route::resource('users','UserController');
-Route::get('/questions/create/{quiz?}','QuestionController@create')->name('questions.create.quiz');
+Route::group(['prefix'=>'admin','middleware'=>'CheckAdmin'],function(){
+    Route::get('/',function (){
+        return view('admin.index');
+    })->name('admin.index');
+    Route::resource('quizzes','QuizController');
 
-Route::get('/quizzes/questions/{id?}','QuestionController@quizQuestion')->name('quizzes.questions');
+    Route::resource('questions','QuestionController');
+    Route::resource('users','UserController');
+    Route::get('/questions/create/{quiz?}','QuestionController@create')->name('questions.create.quiz');
+
+    Route::get('/user/quizzes','UserController@UsersQuizzes')->name('users.quizzes');
+    Route::get('/user/{id}/quizzes','UserController@UserQuizzes')->name('user.quizzes');
+    Route::put('/user/{id}/quizzes','UserController@updateQuizzes')->name('user.update.quizzes');
+
+    Route::get('/quiz/users','QuizController@QuizzesUsers')->name('quizzes.users');
+    Route::get('/quiz/{id}/users','QuizController@QuizUsers')->name('quiz.users');
+    Route::put('/quiz/{id}/users','QuizController@updateUsers')->name('quiz.update.users');
+    Route::get('/quizzes/questions/{id?}','QuestionController@quizQuestion')->name('quizzes.questions');
+});
 
 
-Auth::routes();
+Auth::routes([
+    'register'=>false,
+    'verify'=>false,
+    'reset'=>false
+]);
 
 Route::get('/home', 'HomeController@index')->name('home');

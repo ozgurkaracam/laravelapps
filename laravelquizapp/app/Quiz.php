@@ -15,5 +15,8 @@ class Quiz extends Model
     public static function storeQuiz($request){
         return Quiz::create($request);
     }
+    public function users(){
+        return $this->belongsToMany('App\User','user_quiz')->withTimestamps();
+    }
 
 }

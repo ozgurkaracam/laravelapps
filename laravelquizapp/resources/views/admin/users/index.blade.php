@@ -1,6 +1,10 @@
 @extends('backend.master')
 
 @section('content')
+    @php
+        if(session('message'))
+        \RealRashid\SweetAlert\Facades\Alert::success('message',session('message'));
+    @endphp
     <div class="span9">
         <div class="content">
             <div class="module">
