@@ -17,6 +17,7 @@ Route::get('/',function(){
     return view('welcome');
 });
 
+Route::get('/quiz/{id}/start','HomeController@startQuiz')->name('start.quiz');
 
 Route::group(['prefix'=>'admin','middleware'=>'CheckAdmin'],function(){
     Route::get('/',function (){
@@ -46,3 +47,4 @@ Auth::routes([
 ]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+

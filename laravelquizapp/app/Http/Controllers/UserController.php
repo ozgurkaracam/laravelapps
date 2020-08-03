@@ -63,13 +63,8 @@ class UserController extends Controller
     }
     public function updateQuizzes(Request $request,$id){
         $user=User::findOrFail($id);
-//        $uqids=[];
-//        foreach ($user->quizzes as $quiz)
-//            array_push($uqids,$quiz->id);
-//        dd(array_diff(intval($request->quizzes),$uqids));
-//        dd(array_diff($user->quizzes,$request->quizzes));
         User::findOrFail($id)->quizzes()->detach();
-        if($request->users!=null) {
+        if($request->quizzes!=null){
             foreach ($request->quizzes as $quiz)
                 User::findOrFail($id)->quizzes()->attach(Quiz::findOrFail($quiz));
         }

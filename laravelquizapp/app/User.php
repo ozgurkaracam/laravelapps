@@ -25,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','pivot'
     ];
 
     /**
@@ -38,5 +38,19 @@ class User extends Authenticatable
     ];
     public function quizzes(){
         return $this->belongsToMany('App\Quiz','user_quiz')->withTimestamps();
+    }
+
+    public function completedQuizzes(){
+        return $this->belongsToMany('App\Quiz','results','user_id','quiz_id');
+    }
+    public function unCompletedQuizzes(){
+        $allQuizzes=[];
+        foreach ($this->quizzes as $quiz)
+            array_push($allQuizzes,$quiz);
+        $complatedQuizzes=[];
+        foreach ($complatedQuizzes as $quiz)
+            array_push($complatedQuizzes,$quiz);
+        $son=array_diff($allQuizzes,$complatedQuizzes);
+        return $son;
     }
 }

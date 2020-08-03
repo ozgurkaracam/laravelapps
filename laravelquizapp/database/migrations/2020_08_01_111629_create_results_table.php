@@ -17,12 +17,13 @@ class CreateResultsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('answer_id');
-//            $table->unsignedBigInteger('quiz_id');
-//            $table->unsignedBigInteger('question_id');
+            $table->unsignedBigInteger('quiz_id');
+            $table->unsignedBigInteger('question_id');
 
             $table->foreign('user_id')->on('users')->references('id')->onDelete('CASCADE');
             $table->foreign('answer_id')->on('answers')->references('id')->onDelete('CASCADE');
-//            $table->foreign('quiz_id')->on('quiz_id')->references('id')->onDelete('CASCADE');
+            $table->foreign('quiz_id')->on('quizzes')->references('id')->onDelete('CASCADE');
+            $table->foreign('question_id')->on('questions')->references('id')->onDelete('CASCADE');
             $table->timestamps();
         });
     }
