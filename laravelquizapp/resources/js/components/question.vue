@@ -3,7 +3,7 @@
         <div class="card-title">{{question.question}}<br>
             <ul class="list-group">
                 <li class="list-group-item" v-for="(answer,key) in question.answers">
-                    <input type="radio" name="key" :id="key"> <label :for="key" :value="answer.id">{{answer.answer}}</label>
+                    <input type="radio" v-model="selectedAnswer" name="key" :id="key" :value="answer"> <label :for="key" >{{answer.answer}}</label>
                 </li>
             </ul>
         </div>
@@ -12,6 +12,19 @@
 <script>
     export default {
         props:['question'],
-        name:'question'
+        name:'question',
+        data(){
+            return{
+                selectedAnswer:{}
+            }
+        },
+        methods:{
+        },
+        watch:{
+            selectedAnswer(){
+                this.$store.commit('selectAnswer',this.selectedAnswer)
+                this.$store.dispatch('storeanswer',this.selectedAnswer)
+            }
+        }
     }
 </script>

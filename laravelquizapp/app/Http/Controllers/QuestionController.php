@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Answer;
 use App\Question;
 use App\Quiz;
+use App\Result;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
@@ -123,5 +126,16 @@ class QuestionController extends Controller
         $question=Question::findOrFail($id);
         $question ? $question->delete() : null;
         return redirect()->route('quizzes.questions',$idd)->with('success','Question and Answers Delete!!!');
+    }
+    public function storeresult(Request $request,$quiz){
+        $question=$request->question;
+        $answer=$request->answer;
+        $user=Auth::user()->id;
+        Result::updateOrCreate(
+            ['question_id'=>$question],
+            ['user_id'=>$user,'answer_id'=>$answer,'quiz_id'=>$quiz]
+
+        );
+        return response()->json(['message'=>'OK'],200);
     }
 }

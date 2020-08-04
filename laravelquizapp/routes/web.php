@@ -18,6 +18,8 @@ Route::get('/',function(){
 });
 
 Route::get('/quiz/{id}/start','HomeController@startQuiz')->name('start.quiz');
+Route::post('/quiz/{id}/start','QuestionController@storeresult')->name('start.quiz');
+Route::get('/quiz/{quizid}/results/{userid}','QuizController@results')->name('quiz.results');
 
 Route::group(['prefix'=>'admin','middleware'=>'CheckAdmin'],function(){
     Route::get('/',function (){

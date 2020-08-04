@@ -4,13 +4,14 @@
             <span class="float-right ">{{selectQuestion+1}}/{{questions.length}}</span>
         </div>
         <div class="card-body">
-            <question :question="questions[selectQuestion]"></question>
+            <question v-if="!finish" :question="questions[selectQuestion]"></question>
+            <h1 v-else>Correct Answers: {{$store.state.correctanswers}} / {{questions.length}}</h1>
 
         </div>
         <div class="card-footer px-6">
-            <button class="btn btn-danger" @click="selectQuestion--">Prev</button>
+            <button class="btn btn-danger" v-if="!finish" @click="selectQuestion--">Prev</button>
             <button class="btn btn-info float-right" v-if="selectQuestion<questions.length-1" @click="selectQuestion++">Next</button>
-            <button class="btn btn-success float-right" v-if="selectQuestion==questions.length-1">Finish!</button>
+            <button class="btn btn-success float-right" v-if="selectQuestion==questions.length-1" @click="finishExam">Finish!</button>
         </div>
 
     </div>
@@ -23,11 +24,19 @@
         components: {question},
         data(){
             return{
-                selectQuestion:0
+                selectQuestion:0,
+                finish:false
             }
         },
         created() {
             this.selectQuestion=0
+            this.$store.commit('initApp',{'questions':this.questions, 'quiz':this.quiz})
+        },
+        methods:{
+            finishExam(){
+                this.finish=true
+                console.log(this.$store.state.correctanswers)
+            }
         },
         watch:{
             selectQuestion(){
@@ -35,6 +44,7 @@
                     this.selectQuestion=0
                 else if(this.selectQuestion>=this.questions.length-1)
                     this.selectQuestion=this.questions.length-1
+                this.$store.commit('selectquestion',this.selectQuestion)
             }
         }
 

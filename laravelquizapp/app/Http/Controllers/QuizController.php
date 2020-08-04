@@ -116,4 +116,9 @@ class QuizController extends Controller
         }
         return redirect()->back()->with('message',$quiz->name.' Exams Update Succesfully!');
     }
+    public function results($quizid,$userid){
+        $quiz=Quiz::find($quizid);
+        $user=User::find($userid);
+        return view('results',compact('quiz','user'));
+    }
 }

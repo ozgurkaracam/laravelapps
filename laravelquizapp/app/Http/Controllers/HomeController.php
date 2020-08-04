@@ -26,13 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user=User::find(Auth::user()->id);
+        $user=User::findOrFail(Auth::user()->id);
 //        dd($user->quizzes);
         $quizzes=$user->unCompletedQuizzes();
-        $completedQuizzes=$user->completedQuizzes;
+        $completedQuizzes=$user->completedQuizzes();
         return view('home',compact(['quizzes','completedQuizzes']));
     }
     public function startQuiz($id){
-        return view('quiz',['quiz'=>Quiz::find($id)]);
+        return view('quiz',['quiz'=>Quiz::findOrFail($id)]);
     }
 }

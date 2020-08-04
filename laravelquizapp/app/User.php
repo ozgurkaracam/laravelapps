@@ -40,17 +40,54 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Quiz','user_quiz')->withTimestamps();
     }
 
-    public function completedQuizzes(){
+    public function resultQuizzes(){
         return $this->belongsToMany('App\Quiz','results','user_id','quiz_id');
     }
+    public function answers(){
+        return $this->belongsToMany('App\Answer','results','user_id','answer_id');
+    }
+    public function completedQuizzes(){
+        $arr=[];
+        foreach ($this->resultQuizzes as $quiz){
+                if(!in_array($quiz,$arr,false))
+                    array_push($arr,$quiz);
+
+        }
+        return $arr;
+    }
     public function unCompletedQuizzes(){
-        $allQuizzes=[];
-        foreach ($this->quizzes as $quiz)
-            array_push($allQuizzes,$quiz);
-        $complatedQuizzes=[];
-        foreach ($complatedQuizzes as $quiz)
-            array_push($complatedQuizzes,$quiz);
-        $son=array_diff($allQuizzes,$complatedQuizzes);
-        return $son;
+//        return array_diff($this->quizzes->toArray(),$this->completedQuizzes());
+        $arr=[];
+        foreach ($this->quizzes as $quiz){
+            if(!in_array($quiz,$this->completedQuizzes(),false))
+                array_push($arr,$quiz);
+
+        }
+        return $arr;
+    }
+    public function quizAnswers($quizid){
+        $answers=[];
+        foreach($this->answers as $answer){
+            if($answer->question->quiz->id==$quizid)
+                array_push($answers,$answer->makeHidden('question','pivot'));
+        }
+        return $answers;
+    }
+    public function answerquestion($questionid){
+        $ans=null;
+        foreach ($this->answers as $answer){
+            if($answer->question->id == $questionid)
+                $ans=$answer;
+        }
+        return $ans;
+    }
+    public function correctAnswers($quizid){
+        $answers=[];
+        foreach($this->answers as $answer){
+            if($answer->question->quiz->id==$quizid && $answer->is_correct==true)
+                array_push($answers,$answer->makeHidden('question','pivot'));
+        }
+        return $answers;
+
     }
 }
