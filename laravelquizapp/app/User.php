@@ -59,7 +59,7 @@ class User extends Authenticatable
 //        return array_diff($this->quizzes->toArray(),$this->completedQuizzes());
         $arr=[];
         foreach ($this->quizzes as $quiz){
-            if(!in_array($quiz,$this->completedQuizzes(),false))
+            if(!Result::where('quiz_id','=',$quiz->id)->exists())
                 array_push($arr,$quiz);
 
         }
