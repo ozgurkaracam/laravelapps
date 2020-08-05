@@ -13,11 +13,12 @@
                         <div class="col-md-6 offset-md-3">
                             <ul class="list-group">
                                 @foreach($question->answers as $key=>$answer)
-                                    <li class="list-group-item">{{$answer->answer}} <span class="float-right font-weight-bold">{{ $answer->is_correct ? "Correct Answer" : null }}</span></li>
+                                    <li class="list-group-item">{{$answer->answer}} <span class="float-right"><b>{{ $answer->is_correct ? "Correct Answer" : null }}</b></span></li>
                                 @endforeach
                             </ul>
                             <div class="{{ $user->answerquestion($question->id) && $user->answerquestion($question->id)->is_correct ? 'bg-success' : 'bg-danger' }} p-2 my-2">
-                                Your Answer is : {{ $user->answerquestion($question->id)->answer ?? 'EMPTY' }}
+                                Your Answer is : {{ $user->answerquestion($question->id)->answer ?? 'EMPTY' }} <br>
+
                             </div>
                         </div>
 

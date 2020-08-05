@@ -46,6 +46,14 @@ class User extends Authenticatable
     public function answers(){
         return $this->belongsToMany('App\Answer','results','user_id','answer_id');
     }
+    public function allCorrectAnswers(){
+        $arr=[];
+        foreach($this->answers as $answer){
+            if($answer->is_correct==1)
+                array_push($arr,$answer);
+        }
+        return $arr;
+    }
     public function completedQuizzes(){
         $arr=[];
         foreach ($this->resultQuizzes as $quiz){

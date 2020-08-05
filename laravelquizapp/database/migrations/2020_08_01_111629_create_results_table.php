@@ -24,6 +24,8 @@ class CreateResultsTable extends Migration
             $table->foreign('answer_id')->on('answers')->references('id')->onDelete('CASCADE');
             $table->foreign('quiz_id')->on('quizzes')->references('id')->onDelete('CASCADE');
             $table->foreign('question_id')->on('questions')->references('id')->onDelete('CASCADE');
+
+            $table->unique(['user_id','question_id']);
             $table->timestamps();
         });
     }

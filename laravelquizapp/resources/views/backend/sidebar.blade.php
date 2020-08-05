@@ -30,6 +30,10 @@
                         <li><a href="{{route('users.quizzes')}}"><i class="menu-icon icon-book"></i>User - Quizzes</a></li>
                         <li><a href="{{route('quizzes.users')}}"><i class="menu-icon icon-book"></i>Quiz - Users</a></li>
                     </ul>
+
+                    <ul class="widget widget-menu unstyled">
+                        <li><a href="{{route('users.results')}}"><i class="menu-icon icon-book"></i>User Results</a></li>
+                    </ul>
                     <!--/.widget-nav-->
 {{--                    <ul class="widget widget-menu unstyled">--}}
 {{--                        <li><a class="collapsed" data-toggle="collapse" href="#togglePages"><i class="menu-icon icon-cog">--}}

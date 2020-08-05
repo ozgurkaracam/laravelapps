@@ -39,6 +39,8 @@ Route::group(['prefix'=>'admin','middleware'=>'CheckAdmin'],function(){
     Route::get('/quiz/{id}/users','QuizController@QuizUsers')->name('quiz.users');
     Route::put('/quiz/{id}/users','QuizController@updateUsers')->name('quiz.update.users');
     Route::get('/quizzes/questions/{id?}','QuestionController@quizQuestion')->name('quizzes.questions');
+    Route::get('/results','ResultController@index')->name('users.results');
+    Route::get('/result/{quizid}/user/{userid}','ResultController@result')->name('user.quiz.result');
 });
 
 
