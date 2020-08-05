@@ -1,6 +1,6 @@
 # Simple Quiz App with Laravel & Vuex
 
-##Install
+## Install
 
 `git clone https://github.com/ozgurkaracam/laravelapps/tree/master/laravelquizapp.git`
 
