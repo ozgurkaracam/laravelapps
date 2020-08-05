@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fe24bdf9-7ed1-4bc4-8857-6131765fa2c4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/laravelquizapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/laravelquizapp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurantapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/restaurantapp/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +157,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1596668140894</updated>
-      <workItem from="1596668142639" duration="166000" />
+      <workItem from="1596668142639" duration="196000" />
     </task>
     <servers />
   </component>
