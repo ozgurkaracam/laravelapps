@@ -42,11 +42,11 @@ class LoginController extends Controller
 //            redirect()->route('admin.index');
         $this->middleware('guest')->except('logout');
     }
-    protected function authenticated(Request $request, $user)
-    {
-        if($user->is_admin==1){
-            return redirect()->route('admin.index');
-        }
-        return redirect('/home');
-    }
+//    protected function authenticated(Request $request, $user)
+//    {
+//        if($user->is_admin==1){
+//            return redirect()->route('admin.index');
+//        }
+//        return redirect('/home');
+//    }
 }

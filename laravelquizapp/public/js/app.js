@@ -1984,7 +1984,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       selectQuestion: 0,
       finish: false,
-      duration: 10,
+      duration: this.quiz.duration * 60,
       totalduration: 0
     };
   },
