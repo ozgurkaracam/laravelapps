@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Question;
 use App\Quiz;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
+
 use App\User;
 
 class QuizController extends Controller
@@ -117,6 +118,10 @@ class QuizController extends Controller
         return redirect()->back()->with('message',$quiz->name.' Exams Update Succesfully!');
     }
     public function results($quizid,$userid){
+        if (User::find($userid)->cannot('results', Quiz::find($quizid))) {
+            abort(403);
+
+        }
         $quiz=Quiz::find($quizid);
         $user=User::find($userid);
         return view('results',compact('quiz','user'));

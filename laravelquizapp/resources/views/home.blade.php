@@ -16,9 +16,11 @@
                                     {{$quiz->name}}
                                 </div>
                                 <div class="card-body">
-                                    <li>Description : {{$quiz->description}}</li>
-                                    <li>Duration : {{$quiz->duration}} Min</li>
-                                    <li>Questions : {{$quiz->questions->count()}}</li>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Description : {{$quiz->description}}</li>
+                                        <li class="list-group-item">Duration : {{$quiz->duration}} Min</li>
+                                        <li class="list-group-item">Questions : {{$quiz->questions->count()}}</li>
+                                    </ul>
 
                                 </div>
                                 <div class="card-footer">
@@ -41,9 +43,12 @@
                                     {{$quiz->name}}
                                 </div>
                                 <div class="card-body">
-                                    <li>Description : {{$quiz->description}}</li>
-                                    <li>Duration : {{$quiz->duration}} Min</li>
-                                    <li>Questions : {{$quiz->questions->count()}}</li>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Description : {{$quiz->description}}</li>
+                                        <li class="list-group-item">Duration : {{$quiz->duration}} Min</li>
+                                        <li class="list-group-item">Questions : {{$quiz->questions->count()}}</li>
+                                        <li class="list-group-item">Correct Answers : {{count(\Illuminate\Support\Facades\Auth::user()->correctAnswers($quiz->id)) }}</li>
+                                    </ul>
                                     <a href="{{route('quiz.results',[$quiz->id,Auth::user()->id])}}" class="btn btn-primary">See Results</a>
                                 </div>
                             </div>

@@ -1966,6 +1966,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'quiz',
@@ -1980,15 +1983,22 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       selectQuestion: 0,
-      finish: false
+      finish: false,
+      duration: 10,
+      totalduration: 0
     };
   },
   created: function created() {
+    var _this = this;
+
     this.selectQuestion = 0;
     this.$store.commit('initApp', {
       'questions': this.questions,
       'quiz': this.quiz
     });
+    setTimeout(function () {
+      _this.duration--;
+    }, 1000);
   },
   methods: {
     finishExam: function finishExam() {
@@ -2000,6 +2010,17 @@ __webpack_require__.r(__webpack_exports__);
     selectQuestion: function selectQuestion() {
       if (this.selectQuestion <= 0) this.selectQuestion = 0;else if (this.selectQuestion >= this.questions.length - 1) this.selectQuestion = this.questions.length - 1;
       this.$store.commit('selectquestion', this.selectQuestion);
+    },
+    duration: function duration() {
+      var _this2 = this;
+
+      if (this.duration <= 0) {
+        this.finishExam();
+      } else {
+        setTimeout(function () {
+          _this2.duration--;
+        }, 1000);
+      }
     }
   }
 });
@@ -37675,6 +37696,31 @@ var render = function() {
       "div",
       { staticClass: "card-body" },
       [
+        _c(
+          "div",
+          {
+            staticClass:
+              "font-weight-bold text-primary justify-content-end float-right"
+          },
+          [
+            _vm._v(
+              "\n            Duration: " +
+                _vm._s(
+                  parseInt(this.duration / 60).toString().length == 1
+                    ? "0" + parseInt(this.duration / 60)
+                    : parseInt(this.duration / 60)
+                ) +
+                ":" +
+                _vm._s(
+                  parseInt(this.duration % 60).toString().length == 1
+                    ? "0" + (this.duration % 60)
+                    : parseInt(this.duration % 60)
+                ) +
+                "\n        "
+            )
+          ]
+        ),
+        _vm._v(" "),
         !_vm.finish
           ? _c("question", {
               attrs: { question: _vm.questions[_vm.selectQuestion] }

@@ -4,6 +4,9 @@
             <span class="float-right ">{{selectQuestion+1}}/{{questions.length}}</span>
         </div>
         <div class="card-body">
+            <div class="font-weight-bold text-primary justify-content-end float-right">
+                Duration: {{ (parseInt(this.duration/60)).toString().length==1 ? '0'+parseInt(this.duration/60)  : parseInt(this.duration/60) }}:{{ (parseInt(this.duration%60)).toString().length==1 ? "0"+this.duration%60 : parseInt(this.duration%60) }}
+            </div>
             <question v-if="!finish" :question="questions[selectQuestion]"></question>
             <h1 v-else>Correct Answers: {{$store.state.correctanswers}} / {{questions.length}}</h1>
 
@@ -25,12 +28,17 @@
         data(){
             return{
                 selectQuestion:0,
-                finish:false
+                finish:false,
+                duration:10,
+                totalduration:0
             }
         },
         created() {
             this.selectQuestion=0
             this.$store.commit('initApp',{'questions':this.questions, 'quiz':this.quiz})
+            setTimeout(()=>{
+                this.duration--
+            },1000);
         },
         methods:{
             finishExam(){
@@ -45,6 +53,15 @@
                 else if(this.selectQuestion>=this.questions.length-1)
                     this.selectQuestion=this.questions.length-1
                 this.$store.commit('selectquestion',this.selectQuestion)
+            },
+            duration(){
+                if(this.duration<=0){
+                    this.finishExam()
+                }else{
+                setTimeout(()=>{
+                    this.duration--
+                },1000);
+                }
             }
         }
 
