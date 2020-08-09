@@ -86,7 +86,10 @@
                                 </div>
                                 <div class="card-footer">
                                     <div>
-                                        <a href="#" class="btn btn-outline text-uppercase"> Add To Cart </a>
+                                        <form action="{{route('addtocart')}}" method="POST">@csrf
+                                            <input type="hidden" name="productid" value="{{$product->id}}">
+                                        <button type="submit" class="btn btn-outline text-uppercase"> Add To Cart </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
