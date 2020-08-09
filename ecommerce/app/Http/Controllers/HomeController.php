@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Product;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home',['products'=>Product::orderBy('id','DESC')->paginate(6)]);
+    }
+    public function getProductsByCategory($slug){
+        $catid=Category::where('slug',$slug)->first()->id;
+//        $s=new Collection(Category::where('slug',$slug)->first()->products->sortByDesc('id'));
+        $products=Product::where('category_id',$catid)->orderByDesc('id');
+        return view('home',['products'=>$products->paginate(6),'sliderProducts'=>$products->take(3)->get()]);
+    }
+    public function getProduct($id){
+        return view('product',['product'=>Product::find($id)]);
     }
 }
