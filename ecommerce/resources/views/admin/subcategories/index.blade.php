@@ -17,18 +17,10 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Owner Category</th>
-                                <th colspan="2">Action</th>
+                                <th>Update</th>
+                                <th>Delete</th>
                             </tr>
                             </thead>
-                            <tfoot>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Owner Category</th>
-                                <th colspan="2">Action</th>
-                            </tr>
-                            </tfoot>
-                            <tbody>
                            @if(isset($category))
                             @foreach($category->subcategories as $key=>$subb)
                                 <tr>

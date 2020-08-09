@@ -18,8 +18,9 @@ Route::get('/', function () {
 })->name('admin.index');
 Route::resource('categories','CategoryController');
 Route::resource('subcategories','SubcategoryController');
+Route::resource('products','ProductController');
 Route::get('/subcategories/create/{id?}','SubcategoryController@create')->name('subcategories.create.withcategory');
-
+Route::get('/subcategories/load/{id}','SubcategoryController@loadSubcategories')->name('loadSubcategories');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

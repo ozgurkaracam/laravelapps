@@ -4,9 +4,9 @@
     <div class="container-fluid" id="container-wrapper">
 
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Category {{ isset($subcategory) ? 'Edit' : 'Create' }}</h1>
+            <h1 class="h3 mb-0 text-gray-800">Subcategory {{ isset($subcategory) ? 'Edit' : 'Create' }}</h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="./">Categories</a></li>
+                <li class="breadcrumb-item"><a href="./">Subcategories</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ isset($subcategory) ? 'Edit' : 'Create' }}</li>
             </ol>
         </div>
@@ -19,14 +19,14 @@
                     <form action="{{ isset($subcategory) ? route('subcategories.update',$subcategory->id) : route('subcategories.store') }}" enctype="multipart/form-data" method="POST">@csrf
                         {{ isset($subcategory) ? method_field('PUT') : null }}
                         <div class="form-group">
-                            <label for="name">Category Name</label>
+                            <label for="name">Subcategory Name</label>
                             <input type="text" value="{{ $subcategory->name ?? Old('name') }}" class="form-control" id="name" name="name" placeholder="Category Name">
                             @error('name')
                             <small id="emailHelp" class="form-text text-danger">{{$message}}</small>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="category">Category</label>
+                            <label for="category">Owner Category</label>
                             <select class="select2-single form-control" name="category_id" id="category">
                                 @foreach(\App\Category::all() as $category)
                                     <option {{ (isset($categoryid) && $categoryid==$category->id) || isset($subcategory) && $subcategory->category->id==$category->id ? 'selected' : null }} value="{{$category->id}}">{{$category->name}}</option>

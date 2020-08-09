@@ -36,11 +36,12 @@ class SubcategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $data=$request->validate([
+            'name'=>'required|min:5|max:200',
+            'category_id'=>'required'
+        ]);
         try{
-            $data=$request->validate([
-                'name'=>'required|min:5|max:200',
-                'category_id'=>'required'
-            ]);
+
             Subcategory::create($data);
             notify()->success('Subcategory Added!!!!');
         }catch (\Exception $e){
@@ -57,7 +58,7 @@ class SubcategoryController extends Controller
      */
     public function show($id)
     {
-        $category=Category::find($id);
+        $category=Category::findOrFail($id);
         return view('admin.subcategories.index',compact('category'));
     }
 
@@ -81,11 +82,12 @@ class SubcategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data=$request->validate([
+            'name'=>'required|min:5|max:200',
+            'category_id'=>'required'
+        ]);
         try{
-            $data=$request->validate([
-                'name'=>'required|min:5|max:200',
-                'category_id'=>'required'
-            ]);
+
             Subcategory::findOrFail($id)->update($data);
             notify()->success('Subcategory Edited!!!!');
         }catch (\Exception $e){
@@ -107,5 +109,9 @@ class SubcategoryController extends Controller
         $subcategory->delete();
         notify()->success('Subcategory deleted!');
         return redirect()->route('subcategories.show',$category_id);
+    }
+
+    public function loadSubcategories($id){
+        return response()->json(Category::findOrFail($id)->subcategories,200);
     }
 }

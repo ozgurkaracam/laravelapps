@@ -95,7 +95,7 @@ class CategoryController extends Controller
             $request->validate([
                 'image'=>'image|max:2500|mimes:jpeg,bmp,png'
             ]);
-            File::delete(asset('images/').$c->image);
+            File::delete('images/'.$c->image);
             $imageName=Str::random(16).'.'.$request->file('image')->extension();
             $c->image=$imageName;
             $request->file('image')->move('images',$imageName);
