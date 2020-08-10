@@ -7,8 +7,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6 border-right">
-                            <img src="/images/{{$product->image}}" alt="{{$product->name}}">
-                            <div class="font-weight-bold">{{$product->name}}</div>
+                            <img src="/images/{{$product->image}}" class="img-fluid" alt="{{$product->name}}">
                         </div>
                         <div class="col-md-6">
                             <div><a href="{{route('getproductsbycategory',$product->category->slug)}}">{{ $product->category->name }}</a> / {{$product->subcategory->name}}</div>
@@ -30,20 +29,22 @@
             <div class="card">
                 <div class="card-body">
                     <div class="card-title">
-                        Similar Products
-                        <div class="row">
-                            @foreach(\App\Product::where('category_id',$product->category->id)->take(4)->get() as $p)
+                        <h4>
+                            Similar Products
+                        </h4>
+                        <div class="row mt-2">
+                            @foreach(\App\Product::inRandomOrder()->where('category_id',$product->category->id)->whereNotIn('id',[$product->id])->take(4)->get() as $p)
                                 <div class="col-md-3">
                                     <div class="card">
-                                        <img class="card-img-top" src="/images/{{$p->image}}" alt="Card image">
+                                        <a href="{{route('getProduct',$p->id)}}" ><img class="card-img-top img-fluid" src="/images/{{$p->image}}" alt="Card image"></a>
                                         <div class="card-body">
-                                            <h4 class="card-title">{{$p->name}}</h4>
+                                            <h4 class="card-title"><a href="{{route('getProduct',$p->id)}}" >{{$p->name}}</a></h4>
                                             <p class="card-text">{{\Illuminate\Support\Str::limit($p->description,50)}}
                                                 <br>
                                                 <span class="text-muted">{{$p->price}} ₺</span>
                                             </p>
 
-                                            <a href="#" class="btn btn-primary">See</a>
+                                            <a href="{{route('getProduct',$p->id)}}" class="btn btn-primary">See</a>
                                         </div>
                                     </div>
 

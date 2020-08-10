@@ -42,6 +42,9 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                            <a href="{{route('cart')}}" class="nav-link"><i class="fas fa-shopping-cart"></i><span class="text-sm-center">({{ \Illuminate\Support\Facades\Session::get('cart')->totalqty ?? 0 }})</span></a>
+                        </li>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -60,9 +63,7 @@
                                     <a href="{{route('admin.index')}}" class="nav-link">Admin Panel</a>
                                 </li>
                             @endif
-                            <li class="nav-item">
-                                <a href="{{route('cart')}}" class="nav-link"><i class="fas fa-shopping-cart"></i><span class="text-sm-center">({{ \Illuminate\Support\Facades\Session::get('cart')->totalqty ?? 0 }})</span></a>
-                            </li>
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

@@ -2,17 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f4a969c-0945-431a-acf6-58e76dfb9775" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../laravelquizapp/resources/views/admin/users/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../laravelquizapp/resources/views/admin/users/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ecommerce/resources/views/admin/category/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ecommerce/resources/views/admin/category/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ecommerce/resources/views/admin/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ecommerce/resources/views/admin/layouts/app.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ecommerce/resources/views/admin/layouts/dashboard.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ecommerce/resources/views/admin/layouts/footer.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ecommerce/resources/views/admin/layouts/header.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ecommerce/resources/views/admin/layouts/navbar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ecommerce/resources/views/admin/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../laravelquizapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../laravelquizapp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../laravelquizapp/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/../laravelquizapp/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../laravelquizapp/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/../laravelquizapp/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../laravelquizapp/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/../laravelquizapp/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../laravelquizapp/resources/views/admin/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../laravelquizapp/resources/views/admin/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../laravelquizapp/resources/views/backend/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../laravelquizapp/resources/views/backend/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../laravelquizapp/resources/views/backend/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../laravelquizapp/resources/views/backend/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../laravelquizapp/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/../laravelquizapp/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -190,6 +190,7 @@
       <workItem from="1595973039123" duration="12771000" />
       <workItem from="1596214434808" duration="5189000" />
       <workItem from="1596403969362" duration="198000" />
+      <workItem from="1596740392115" duration="1288000" />
     </task>
     <servers />
   </component>
@@ -201,6 +202,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1596219948827" />
+    <state x="490" y="154" width="540" height="540" key="StructurePopup" timestamp="1596740466435">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="490" y="154" width="540" height="540" key="StructurePopup/0.0.1536.824@0.0.1536.824" timestamp="1596740466435" />
     <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1596214442706">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -209,9 +214,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1596122911186" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1596404150756">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1596740468934">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1596404150756" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1596740468934" />
   </component>
 </project>

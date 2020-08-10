@@ -18,6 +18,6 @@ class auth
         if(\Illuminate\Support\Facades\Auth::user())
             return $next($request);
         else
-            abort(403);
+            return redirect()->route('login');
     }
 }

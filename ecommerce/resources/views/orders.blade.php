@@ -13,6 +13,7 @@
                         <td>Order Id</td>
                         <td>Products</td>
                         <td>Total Price</td>
+                        <td>Time</td>
                     </tr>
                     @foreach($orders as $order)
                         @php $cart=unserialize($order->cart) @endphp
@@ -21,13 +22,16 @@
                             <td>{{$order->id}}</td>
                             <td>
                                 @foreach($cart->items as $item)
-                                    <p>{{$item->name}} <b>{{$item->qty}} Count</b> {{ $item->qty*$item->price }} ₺</p>
+                                    <p><a href="{{ route('getProduct',$item->id) }}">{{$item->name}}</a> <b>{{$item->qty}} Count</b> {{ $item->qty*$item->price }} ₺</p>
 
                                     @endforeach
 
                             </td>
                             <td>
                                 {{$cart->totalprice}} ₺
+                            </td>
+                            <td>
+                                {{$order->created_at}}
                             </td>
                         </tr>
 

@@ -2,13 +2,14 @@
 
 ## Install
 
-`git clone https://github.com/ozgurkaracam/laravelapps/tree/master/laravelquizapp.git`
 
 `npm install`
 
 `cp .env.example .env`
 
 prepare env.
+
+`php artisan key:generate`
 
 `php artisan migrate --seed`
 
