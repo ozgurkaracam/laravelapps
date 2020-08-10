@@ -35,8 +35,11 @@ class CartController extends Controller
     }
 
     public function order($total){
+        if(Session::has('cart')){
             $cart=new Cart(Session::get('cart'));
             return view('order',compact('total','cart'));
+        }
+            return abort(404);
     }
     public function payment(Request $request){
 //        $charge=Stripe::charges()->create([
