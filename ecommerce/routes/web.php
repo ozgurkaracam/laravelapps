@@ -31,6 +31,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/c/{slug}','HomeController@getProductsByCategory')->name('getproductsbycategory');
+Route::get('/c/{slug}/sub/','HomeController@getProductsBySubcategory')->name('getproductsbysubcategory');
 Route::get('/p/{id}','HomeController@getProduct')->name('getProduct');
 Route::post('/addtocart','CartController@addToCart')->name('addtocart');
+Route::post('/deletetocart','CartController@deleteToCart')->name('deletetocart');
 Route::get('/cart','CartController@index')->name('cart');
+Route::get('/order/{total}','CartController@order')->name('order');
+Route::post('/charge','CartController@payment');
+Route::get('/orders','CartController@orders')->name('orders');
+
+

@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
+    @notifyCss
 </head>
 <body>
     <div id="app">
@@ -49,6 +52,9 @@
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('orders')}}">My Orders</a>
+                            </li>
                             @if(\Illuminate\Support\Facades\Auth::user()->id==1)
                                 <li class="nav-item">
                                     <a href="{{route('admin.index')}}" class="nav-link">Admin Panel</a>
@@ -84,5 +90,7 @@
             @yield('content')
         </main>
     </div>
+    @include('notify::messages')
+@notifyJs
 </body>
 </html>

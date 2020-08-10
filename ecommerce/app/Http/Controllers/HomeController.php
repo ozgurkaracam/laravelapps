@@ -37,4 +37,8 @@ class HomeController extends Controller
     public function getProduct($id){
         return view('product',['product'=>Product::find($id)]);
     }
+    public function getProductsBySubcategory(Request $request,$slug){
+        $products=Product::whereIn('subcategory_id',$request->subcategories)->orderByDesc('id');
+        return view('home',['products'=>$products->paginate(6),'sliderProducts'=>$products->take(3)->get()]);
+    }
 }

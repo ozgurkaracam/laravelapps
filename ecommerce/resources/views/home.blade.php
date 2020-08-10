@@ -19,7 +19,7 @@
                         <div class="row list-group-item d-inline-flex align-items-center">
                                 <img src="/images/{{$category->image}}" class="rounded-circle img-fluid" width="50" alt="{{ $category->name }}">
                                 <div class="justify-content-center">
-                                    <a href="{{route('getproductsbycategory',$category->slug)}}" class="ml-1">{{$category->name}}</a>
+                                    <a href="{{route('getproductsbycategory',$category->slug)}}" class="ml-1 {{ \Illuminate\Support\Facades\Request::segment(2) == $category->slug ? 'text-danger' : '' }}">{{$category->name}}</a>
                                 </div>
                         </div>
 
@@ -31,6 +31,25 @@
 
             <div class="col-lg-9">
                 <div class="title"><h2>{{ $sliderProducts[0]->category->name ?? '' }}</h2></div>
+                @if(isset($sliderProducts[0]->category->name))
+                    <form action="{{route('getproductsbysubcategory',$sliderProducts[0]->category->slug)}}" method="GET">
+                    <div class="d-flex justify-content-between">
+
+
+                            @foreach(\App\Category::find($sliderProducts[0]->category->id)->subcategories as $key=>$subcategory)
+                            <div class="form-group">
+                                <input type="checkbox" name="subcategories[]" value="{{$subcategory->id}}">
+                                <label for="{{$key}}">{{$subcategory->name}}</label>
+                            </div>
+                                @endforeach
+
+
+                    </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary">Filter!</button>
+                        </div>
+                    </form>
+                    @endif
                 <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
                     <ol class="carousel-indicators">
 {{--                        @foreach($products->orderBy('id','DESC')->limit(3)->get() as $key=>$product)--}}
@@ -82,7 +101,8 @@
                                     </h4>
                                     <h5>{{$product->price}} ₺</h5>
                                     <p class="card-text">{{\Illuminate\Support\Str::limit($product->description,120)}}</p>
-                                    <p class="text-muted">{{$product->category->name}} / {{$product->subcategory->name ?? ''}}</p>
+                                    <p class="text-muted"><a href="{{route('getproductsbycategory',$product->category->slug)}}">{{$product->category->name}}</a> /
+                                        {{$product->subcategory->name ?? ''}}</p>
                                 </div>
                                 <div class="card-footer">
                                     <div>
