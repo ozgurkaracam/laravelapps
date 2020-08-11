@@ -2,6 +2,9 @@
 
 ## Install
 
+`git clone https://github.com/ozgurkaracam/laravelapps.git`
+
+`cd ecommerce`
 
 `npm install`
 
